@@ -13,13 +13,11 @@ class Db_setup extends Custom_Controller {
   {
 
     if( !$this->db->table_exists('sessions') ){
-
       try {
         $this->setup_model->create_sessions();
       } catch (Exception $e) {
         echo $e->getMessage();
       }
-
     }
 
     if( !$this->db->table_exists('staff') ){
