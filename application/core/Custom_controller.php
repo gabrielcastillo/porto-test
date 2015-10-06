@@ -10,6 +10,7 @@ class Custom_controller extends CI_Controller {
     $this->_checkdatbasetables();
 		session_start();
 		$this->data['sitename'] = 'Booking System';
+    $this->output->enable_profiler(TRUE);
 	}
 
 

@@ -13,20 +13,26 @@ class Db_setup extends Custom_Controller {
     $this->load->model('setup_model');
 
     if( $this->setup_model->create_sessions() == FALSE ){
-      echo 'Sessions table could not be created';
+      die('Sessions table could not be created');
     }
 
     if( $this->setup_model->create_staff() == FALSE ){
-      echo 'Staff table could not be created';
+      die('Staff table could not be created');
     }
 
     if( $this->setup_model->create_guests() == FALSE ){
-      echo 'Guests table could not be created';
+      die('Guests table could not be created');
     }
 
     if( $this->setup_model->create_guests_addresses() == FALSE ){
-      echo 'Guest Address could not be created';
+      die('Guest Address could not be created');
     }
+
+    if( $this->setup_model->create_guest_address() == FALSE ){
+      die('Guest address not created');
+    }
+
+    redirect('login');
 
   }
 

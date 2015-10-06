@@ -161,17 +161,35 @@ class Setup_model extends CI_Model {
         'unsigned' => TRUE,
         'auto_increment' => TRUE,
         ),
-      'guest_address1' => array(),
-      'guest_address2' => array(),
-      'guest_city' => array(),
-      'guest_state' => array(),
-      'guest_postal' => array(),
-      'guest_country' => array(),
+      'guest_address1' => array(
+        'type' => 'VARCHAR',
+        'constraint' => 255,
+        ),
+      'guest_address2' => array(
+        'type' => 'VARCHAR',
+        'constraint' => 255,
+        ),
+      'guest_city' => array(
+        'type' => 'VARCHAR',
+        'constraint' => 255,
+        ),
+      'guest_state' => array(
+        'type' => 'VARCHAR',
+        'constraint' => 255,
+        ),
+      'guest_postal' => array(
+        'type' => 'VARCHAR',
+        'constraint' => 25,
+        ),
+      'guest_country' => array(
+        'type' => 'VARCHAR',
+        'constraint' => 255,
+        ),
       );
 
     $this->dbforge->add_field($args);
-
     $this->dbforge->add_key('guest_address_id');
+
     return $this->dbforge->create_table('guest_address');
   }
 
