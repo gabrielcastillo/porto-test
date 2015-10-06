@@ -12,25 +12,40 @@ class Db_setup extends Custom_Controller {
   public function create_database()
   {
 
-    if( $this->setup_model->create_sessions() == FALSE ){
-      die('Sessions table could not be created');
+    if( !$this->db->table_exists('sessions') ){
+
+      try {
+        $this->setup_model->create_sessions();
+      } catch (Exception $e) {
+        echo $e->getMessage();
+      }
+
     }
 
-    if( $this->setup_model->create_staff() == FALSE ){
-      die('Staff table could not be created');
+    if( !$this->db->table_exists('staff') ){
+      try {
+        $this->setup_model->create_staff();
+      } catch ( Exception $e ) {
+        echo $e->getMessage();
+      }
     }
 
-    if( $this->setup_model->create_guests() == FALSE ){
-      die('Guests table could not be created');
+    if( !$this->db->table_exists('guests') ){
+      try {
+        $this->setup_model->create_guests();
+      } catch ( Exception $e ) {
+        echo $e->getMessage();
+      }
     }
 
-    if( $this->setup_model->create_guests_addresses() == FALSE ){
-      die('Guest Address could not be created');
+    if( !$this->db->table_exists('guest_address') ){
+      try {
+        $this->setup_model->create_guest_address();
+      } catch ( Exception $e ) {
+        echo $e->getMessage();
+      }
     }
 
-    if( $this->setup_model->create_guest_address() == FALSE ){
-      die('Guest address not created');
-    }
 
     redirect('login');
 
