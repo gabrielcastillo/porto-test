@@ -6,11 +6,11 @@ class Db_setup extends Custom_Controller {
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('setup_model');
   }
 
   public function create_database()
   {
-    $this->load->model('setup_model');
 
     if( $this->setup_model->create_sessions() == FALSE ){
       die('Sessions table could not be created');
@@ -34,6 +34,11 @@ class Db_setup extends Custom_Controller {
 
     redirect('login');
 
+  }
+
+  public function update_staff()
+  {
+    $this->setup_model->update_staff_table();
   }
 
 

@@ -31,7 +31,7 @@
 						<img src="/public/images/!logged-user.jpg" alt="Joseph Doe" class="img-circle" data-lock-picture="/public/images/!logged-user.jpg" />
 					</figure>
 					<div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
-						<span class="name">John Doe Junior</span>
+						<span class="name"><?php echo ucwords($_SESSION['staff_name']); ?></span>
 						<span class="role">administrator</span>
 					</div>
 

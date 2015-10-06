@@ -17,12 +17,12 @@
 	<link rel="stylesheet" href="<?php echo base_url('public/vendor/font-awesome/css/font-awesome.css'); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url('public/vendor/magnific-popup/magnific-popup.css'); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url('public/vendor/bootstrap-datepicker/css/datepicker3.css'); ?>" />
-
+	<?php if( $this->uri->segment(1) != 'login' ): ?>
 	<!-- Specific Page Vendor CSS -->
 	<link rel="stylesheet" href="<?php echo base_url('public/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css'); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url('public/vendor/bootstrap-multiselect/bootstrap-multiselect.css'); ?>" />
 	<link rel="stylesheet" href="<?php echo base_url('public/vendor/morris/morris.css'); ?>" />
-
+	<?php endif; ?>
 	<!-- Theme CSS -->
 	<link rel="stylesheet" href="<?php echo base_url('public/stylesheets/theme.css'); ?>" />
 

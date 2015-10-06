@@ -75,6 +75,11 @@ class Setup_model extends CI_Model {
       'staff_last_login' => array(
         'type' => 'DATETIME',
         'default' => '0000-00-00 00:00:00'
+        ),
+      'staff_role' => array(
+        'type' => "ENUM('staff', 'manager', 'administrator')",
+        'default' => 'staff',
+        'null' => FALSE
         )
       );
 
@@ -191,6 +196,18 @@ class Setup_model extends CI_Model {
     $this->dbforge->add_key('guest_address_id');
 
     return $this->dbforge->create_table('guest_address');
+  }
+
+  public function update_staff_table()
+  {
+    $args = array(
+    'staff_role' => array(
+        'type' => "ENUM('staff', 'manager', 'administrator')",
+        'default' => 'staff',
+        'null' => FALSE
+        )
+    );
+    return $this->dbforge->add_column('staff', $args);
   }
 
 
