@@ -31,9 +31,10 @@ class Login extends Custom_controller {
 					redirect('login');
 				}else{
 
-					$_SESSION['staff_name'] = $record->staff_fname . ' ' . $record->staff_lname;
-					$_SESSION['staff_email'] = $record->staff_email;
-					$_SESSION['staff_id'] = $record->staff_id;
+					$_SESSION['staff_name'] 	= $record->staff_fname . ' ' . $record->staff_lname;
+					$_SESSION['staff_email'] 	= $record->staff_email;
+					$_SESSION['staff_id'] 		= $record->staff_id;
+					$_SESSION['staff_role'] 	= $record->staff_role;
 
 					session_write_close();
 					redirect('dashboard');
