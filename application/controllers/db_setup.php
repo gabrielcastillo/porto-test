@@ -36,11 +36,6 @@ class Db_setup extends Custom_Controller {
 
   }
 
-  public function update_staff()
-  {
-    $this->setup_model->update_staff_table();
-  }
-
 
 }
 
