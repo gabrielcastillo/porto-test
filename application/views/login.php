@@ -11,10 +11,7 @@
 			<div class="panel-body">
 				<?php echo $this->session->flashdata('message'); ?>
 				<?php if( validation_errors() ): ?>
-					<div class="alert alert-danger">
-						<button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
-						<?php echo validation_errors(); ?>
-					</div>
+				<?php echo alert_message('danger', validation_errors()); ?>
 				<?php endif; ?>
 				<?php echo form_open('login'); ?>
 					<div class="form-group mb-lg">

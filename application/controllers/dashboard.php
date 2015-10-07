@@ -14,14 +14,4 @@ class Dashboard extends Custom_controller {
 		$this->load->view('footer');
 	}
 
-	public function calendar()
-	{
-
-		$this->load->model('calendars');
-
-		$this->load->view('header', $this->data);
-		$this->load->view('calendar');
-		$this->load->view('footer');
-	}
-
 }
