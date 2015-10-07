@@ -43,9 +43,8 @@ class Login extends Custom_controller {
 			}
 
 		}else{
-			$this->load->view( 'header', $this->data );
-			$this->load->view( 'login' );
-			$this->load->view( 'footer' );
+
+			$this->load->view( 'login',$this->data );
 
 			$this->session->unset_userdata('email');
 		}
@@ -87,9 +86,7 @@ class Login extends Custom_controller {
 			redirect('login');
 		}else{
 
-			$this->load->view( 'header', $this->data );
-			$this->load->view( 'reset-password' );
-			$this->load->view( 'footer' );
+			$this->load->view( 'reset-password',$this->data );
 		}
 	}
 

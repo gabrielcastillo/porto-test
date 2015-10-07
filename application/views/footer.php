@@ -1,3 +1,7 @@
+<!-- end: page -->
+</section>
+</div>
+</section>
 <!-- Vendor -->
 <script src="<?php echo base_url('public/vendor/jquery/jquery.js'); ?>"></script>
 <script src="<?php echo base_url('public/vendor/jquery-browser-mobile/jquery.browser.mobile.js'); ?>"></script>
