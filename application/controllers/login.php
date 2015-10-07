@@ -7,7 +7,7 @@ class Login extends Custom_controller {
 
 		$this->load->library('form_validation');
 		$this->load->helper( 'form' );
-		$this->load->model('users_model');
+		$this->load->model('staff_model');
 
 		$this->form_validation->set_error_delimiters('','');
 	}
@@ -19,7 +19,7 @@ class Login extends Custom_controller {
 
 		if( $this->form_validation->run() != FALSE ){
 
-			$record = $this->users_model->authenticate_user($this->input->post('email', TRUE));
+			$record = $this->staff_model->authenticate_user($this->input->post('email', TRUE));
 
 			if( $record == FALSE ){
 				$this->session->set_flashdata('message', alert_message('danger', 'Email not found!'));
@@ -59,6 +59,15 @@ class Login extends Custom_controller {
 
 			$password = $this->generate_password();
 
+			$return = $this->staff_model->update_staff_password($this->input->post('email', TRUE), hash('sha256', $this->input->post('email', TRUE) . '|' . $password));
+
+
+			if( $return === FALSE ){
+				$this->session->set_flashdata('message', alert_message('danger', 'Email not found!'));
+				$this->session->set_userdata('email', $this->input->post('email', TRUE));
+				redirect('login/reset');
+			}
+
 			$this->load->library('email');
 			//TODO: Create email config handler for gmail and or smtp settingts.
 			$config[''] = '';
@@ -80,7 +89,8 @@ class Login extends Custom_controller {
 			}else{
 				$this->session->set_flashdata('message', alert_message('warning', 'System Error: Email could not be sent.'));
 
-				$this->email->debugger();
+				$this->email->print_debugger();
+				exit;
 			}
 
 			redirect('login');
