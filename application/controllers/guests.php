@@ -10,10 +10,19 @@ class Guests extends Custom_Controller {
 
   public function index()
   {
+    redirect('guests/view');
+  }
+
+  public function view()
+  {
     $this->load->view('header', $this->data);
     $this->load->view('guests/view');
     $this->load->view('footer');
   }
+
+
+
+
 
   private function calendarEvents()
   {

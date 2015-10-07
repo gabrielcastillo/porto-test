@@ -69,11 +69,11 @@
 					<li class="nav-parent">
 						<a>
 							<i class="fa fa-table" aria-hidden="true"></i>
-							<span>Tables</span>
+							<span>Guests</span>
 						</a>
 						<ul class="nav nav-children">
 							<li>
-								<a href="tables-basic.html">
+								<a href="<?php echo base_url('guests/view'); ?>">
 									Basic
 								</a>
 							</li>
