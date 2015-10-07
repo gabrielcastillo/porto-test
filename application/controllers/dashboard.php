@@ -13,5 +13,5 @@ class Dashboard extends Custom_controller {
 		$this->load->view('dashboard');
 		$this->load->view('footer');
 	}
-
+	
 }
