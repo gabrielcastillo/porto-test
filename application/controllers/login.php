@@ -22,11 +22,12 @@ class Login extends Custom_controller {
 			$record = $this->users_model->authenticate_user($this->input->post('email', TRUE));
 
 			if( $record == FALSE ){
-				$this->session->set_flashdata('message', 'Email not found!');
+				$this->session->set_flashdata('message', alert_message('danger', 'Email not found!'));
+				$this->session->set_userdata('email', $this->input->post('email', TRUE));
 				redirect('login');
 			}else{
 				if( $record->staff_password != hash('sha256', $this->input->post('email', TRUE) . '|' . $this->input->post('password', TRUE)) ){
-					$this->session->set_flashdata('message', 'Incorrect password!');
+					$this->session->set_flashdata('message', alert_message('danger', 'Incorrect Password!'));
 					$this->session->set_userdata('email', $this->input->post('email', TRUE));
 					redirect('login');
 				}else{
@@ -60,7 +61,7 @@ class Login extends Custom_controller {
 			$password = $this->generate_password();
 
 			$this->load->library('email');
-
+			//TODO: Create email config handler for gmail and or smtp settingts.
 			$config[''] = '';
 			$config[''] = '';
 			$config[''] = '';
@@ -76,9 +77,9 @@ class Login extends Custom_controller {
 			$this->email->message($password);
 
 			if( $this->email->send() ){
-				$this->session->set_flashdata('message', 'email has been sent');
+				$this->session->set_flashdata('message', alert_message('danger', 'Email has been sent.'));
 			}else{
-				$this->session->set_flashdata('message', 'email not sent');
+				$this->session->set_flashdata('message', alert_message('warning', 'System Error: Email could not be sent.'));
 
 				$this->email->debugger();
 			}
